@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+ng
 @Component({
   selector: 'videojuegos',
   template: `<h2>{{nombre}}</h2>`
