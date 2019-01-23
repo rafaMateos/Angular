@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KendoUIComponent } from './kendo-ui.component';
+import { KendoUI } from './kendo-ui.component';
 
 describe('KendoUIComponent', () => {
-  let component: KendoUIComponent;
-  let fixture: ComponentFixture<KendoUIComponent>;
+  let component: KendoUI;
+  let fixture: ComponentFixture<KendoUI>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KendoUIComponent ]
+      declarations: [ KendoUI ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KendoUIComponent);
+    fixture = TestBed.createComponent(KendoUI);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

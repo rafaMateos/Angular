@@ -5,12 +5,14 @@ import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  providers: [NgbModalConfig, NgbModal],
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
@@ -19,7 +21,11 @@ export class AppComponent {
   url : string = 'https://apirestpersonasrafael.azurewebsites.net/api/personas';
  
 
-  constructor(private pepe : ApiService){}
+  constructor(private pepe : ApiService , config: NgbModalConfig, private modalService: NgbModal){
+
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
     ApiRest(){
 
@@ -27,6 +33,7 @@ export class AppComponent {
         result => {
              
             if(result.code != 200){
+              
                 console.log(result);
             }
         },
@@ -35,6 +42,11 @@ export class AppComponent {
         }
     );
 
+    }
+
+    open(content) {
+      
+      this.modalService.open(content);
     }
 
   

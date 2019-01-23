@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { sampleProducts } from './products';
 
 import { ApiService } from '../api.service'
+import { Observable } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -16,16 +18,53 @@ export class KendoUI {
     public gridData: any[];
 
     constructor(public servi: ApiService) {
-         
+
      }
+   
+     ngOnInit() {
+        this.servi.getProductos().subscribe(
+            result => {
+                 
+                if(result.code != 200){
+                    this.gridData = (result);
+                }else{
+                    this.gridData = result.data;
+                }
+ 
+            },
+            error => {
+                console.log(<any>error);
+            }
+        );
 
-     rellenar(){
-
-        console.log(this.servi.getProductos());
      }
-
+        
+      }
      
 
 
-    }
+        /*
+     rellenar(){
+
+        this.servi.getProductos().subscribe(
+            result => {
+                 
+                if(result.code != 200){
+                    this.gridData = (result);
+                }else{
+                    this.gridData = result.data;
+                }
+ 
+            },
+            error => {
+                console.log(<any>error);
+            }
+        );
+
+     }
+     */
+    
+
+
+    
     

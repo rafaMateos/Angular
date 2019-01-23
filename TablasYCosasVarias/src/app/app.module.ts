@@ -4,20 +4,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TablitaComponent } from '../app/tablita/tablita.component';
+
 import { GridModule } from '@progress/kendo-angular-grid';
 
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { KendoUI } from './kendo-ui/kendo-ui.component'
+import { KendoUI } from './kendo-ui/kendo-ui.component';
+import { ModalComponent } from './modal/modal.component'
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TablitaComponent,
-    KendoUI
+    
+    KendoUI,
+    ModalComponent
     
   ],
   imports: [

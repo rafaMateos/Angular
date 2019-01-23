@@ -1,7 +1,15 @@
-<kendo-grid [data]="gridData" [height]="410">
-  <kendo-grid-column field="nombre" title="ID" width="40">
+<kendo-grid [data]="gridData">
+  
+  <kendo-grid-column field="nombre" title="nombre" width="40">
   </kendo-grid-column>
-  <kendo-grid-column field="apellidos" title="Name" width="250">
+  <kendo-grid-column field="Apellidos" title="Apellidos" width="250">
   </kendo-grid-column>
+  <kendo-grid-column field="telefono" title="telefono" width="250">
+  </kendo-grid-column>
+
+  <kendo-grid-column field="Discontinued" title="Discontinued" width="120">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    <input type="button" width="100" height="100" value="Editar" onclick="open()"/>
+                </ng-template>
+            </kendo-grid-column>
 </kendo-grid>
-   
