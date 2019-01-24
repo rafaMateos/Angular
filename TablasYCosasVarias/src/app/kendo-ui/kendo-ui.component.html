@@ -7,9 +7,36 @@
   <kendo-grid-column field="telefono" title="telefono" width="250">
   </kendo-grid-column>
 
-  <kendo-grid-column field="Discontinued" title="Discontinued" width="120">
+  <kendo-grid-column field="Editar" title="Editar" width="120">
                 <ng-template kendoGridCellTemplate let-dataItem>
                     <input type="button" width="100" height="100" value="Editar" onclick="open()"/>
                 </ng-template>
             </kendo-grid-column>
+            
+
+
 </kendo-grid>
+
+<form class="login-form">
+<div class="col-xs-12 col-sm-6 example-col">
+    <kendo-textbox-container floatingLabel="Nombre">
+      <input kendoTextBox name="nombre" [(ngModel)]="nombre"/>
+    </kendo-textbox-container>
+</div>
+
+<div class="col-xs-12 col-sm-6 example-col">
+    <kendo-textbox-container floatingLabel="Apellidos">
+      <input kendoTextBox name="Apellidos" [(ngModel)]="Apellidos" />
+    </kendo-textbox-container>
+</div>
+
+<div class="col-xs-12 col-sm-6 example-col">
+    <kendo-textbox-container floatingLabel="telefono">
+      <input kendoTextBox name="telefono" [(ngModel)]="telefono" />
+    </kendo-textbox-container>
+</div>
+<button (click)="CargarDatosApi()">CargarDatos</button>
+
+</form>
+
+

@@ -16,6 +16,9 @@ import { ThrowStmt } from '@angular/compiler';
 export class KendoUI {
 
     public gridData: any[];
+    public nombre: any;
+    public Apellidos: any;
+    public telefono: any;
 
     constructor(public servi: ApiService) {
 
@@ -38,8 +41,18 @@ export class KendoUI {
         );
 
      }
+
+     CargarDatosApi(){
+
+        console.log(this.nombre);
+        console.log(this.Apellidos);
+        console.log(this.telefono);
+
+     }
         
       }
+
+
      
 
 
