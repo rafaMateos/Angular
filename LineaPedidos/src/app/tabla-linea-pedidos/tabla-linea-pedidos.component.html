@@ -1,0 +1,38 @@
+
+
+
+<div style="margin: 10px" style="float: left" >
+  <Input type="button" value="CrearNuevoPedido" onclick="OpenModalCrearPedido()"/>
+</div>
+
+
+
+
+<div class="right">
+        <input type="text" placeholder="search">
+        <input type="submit" value="&#10140;"/>
+ </div>
+      
+
+<kendo-grid [data]="gridData" style="float: left">
+  <kendo-grid-column field="fechaRealizacion" title="fechaRealizacion" width="40">
+  </kendo-grid-column>
+  <kendo-grid-column field="fechaDeEnvio" title="fechaDeEnvio" width="40">
+  </kendo-grid-column>
+  <kendo-grid-column field="cliente" title="cliente" width="40">
+  </kendo-grid-column>
+  <kendo-grid-column field="proveedor" title="proveedor" width="40">
+  </kendo-grid-column>
+  <kendo-grid-column field="total" title="total" width="40">
+  </kendo-grid-column>
+
+  <kendo-grid-column field="Editar" title="Editar" width="120">
+    <ng-template kendoGridCellTemplate let-dataItem>
+        <input  type="button" width="100" height="100" value="Editar"/>
+        <input  type="button" width="100" height="100" value="Borrar"/>
+    </ng-template>
+</kendo-grid-column>
+</kendo-grid>
+
+
+
