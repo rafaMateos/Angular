@@ -12,12 +12,21 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class TablaLineaPedidosComponent implements OnInit {
 
   public gridData: any[] = products;
+  
+  
 
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+
+ 
+
+
   }
 
   
 
-}
+
