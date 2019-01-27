@@ -1,0 +1,123 @@
+[
+    {
+        "producto": {
+            "id": 2,
+            "nombre": "Sistema operativo NachOS de 64bit",
+            "precioVenta": 199.95,
+            "descripcion": "Sistema operativo de ultima generación. Mejor que el de Microsoft.",
+            "stock": 4999,
+            "listaCategorias": [
+                {
+                    "nombre": "Software"
+                }
+            ]
+        },
+        "idPedido": 1,
+        "idProducto": 2,
+        "precioUnitario": 199.95,
+        "cantidad": 1,
+        "impuestos": 0.21,
+        "subtotal": 199.95
+    },
+
+    {
+        "producto": {
+            "id": 3,
+            "nombre": "Maquina de café de cápsulas",
+            "precioVenta": 49.99,
+            "descripcion": "El complemento perfecto para retirarte de tu ciclo.",
+            "stock": 2,
+            "listaCategorias": [
+                {
+                    "nombre": "Bebidas"
+                }
+            ]
+        },
+        "idPedido": 1,
+        "idProducto": 3,
+        "precioUnitario": 49.99,
+        "cantidad": 1,
+        "impuestos": 0.21,
+        "subtotal": 49.99
+    },
+    {
+        "producto": {
+            "id": 3,
+            "nombre": "Maquina de café de cápsulas",
+            "precioVenta": 49.99,
+            "descripcion": "El complemento perfecto para retirarte de tu ciclo.",
+            "stock": 2,
+            "listaCategorias": [
+                {
+                    "nombre": "Bebidas"
+                }
+            ]
+        },
+        "idPedido": 1,
+        "idProducto": 3,
+        "precioUnitario": 49.99,
+        "cantidad": 1,
+        "impuestos": 0.21,
+        "subtotal": 49.99
+    },
+    {
+        "producto": {
+            "id": 3,
+            "nombre": "Maquina de café de cápsulas",
+            "precioVenta": 49.99,
+            "descripcion": "El complemento perfecto para retirarte de tu ciclo.",
+            "stock": 2,
+            "listaCategorias": [
+                {
+                    "nombre": "Bebidas"
+                }
+            ]
+        },
+        "idPedido": 1,
+        "idProducto": 3,
+        "precioUnitario": 49.99,
+        "cantidad": 1,
+        "impuestos": 0.21,
+        "subtotal": 49.99
+    },
+    {
+        "producto": {
+            "id": 3,
+            "nombre": "Maquina de café de cápsulas",
+            "precioVenta": 49.99,
+            "descripcion": "El complemento perfecto para retirarte de tu ciclo.",
+            "stock": 2,
+            "listaCategorias": [
+                {
+                    "nombre": "Bebidas"
+                }
+            ]
+        },
+        "idPedido": 1,
+        "idProducto": 3,
+        "precioUnitario": 49.99,
+        "cantidad": 1,
+        "impuestos": 0.21,
+        "subtotal": 49.99
+    },
+    {
+        "producto": {
+            "id": 3,
+            "nombre": "Maquina de café de cápsulas",
+            "precioVenta": 49.99,
+            "descripcion": "El complemento perfecto para retirarte de tu ciclo.",
+            "stock": 2,
+            "listaCategorias": [
+                {
+                    "nombre": "Bebidas"
+                }
+            ]
+        },
+        "idPedido": 1,
+        "idProducto": 3,
+        "precioUnitario": 49.99,
+        "cantidad": 1,
+        "impuestos": 0.21,
+        "subtotal": 49.99
+    }
+]

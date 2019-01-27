@@ -1,0 +1,69 @@
+
+
+<h1>Order details</h1>
+
+    <ul>
+        <li>Customer</li>
+        <li>{{Data.nombreCliente}}</li>
+    </ul>
+
+    <ul>
+      <li>Supplier</li>
+      <li>{{Data.nombreVendedor}}</li>
+  </ul>
+
+  <ul>
+    <li>OrderDate</li>
+    <li>{{Data.fechaPedido}}</li>
+</ul>
+
+<ul>
+  <li>Dispatch Date</li>
+  <li>{{Data.fechaEntrega}}</li>
+</ul>
+
+
+
+<table cdk-table [dataSource]="dataSource$">
+
+  <tr cdk-header-row *cdkHeaderRowDef="columns"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
+
+  <!-- id Column -->
+  <ng-container cdkColumnDef="id">
+    <th cdk-header-cell *cdkHeaderCellDef>ID</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.id}} </td>
+  </ng-container>
+
+  <!-- nombre Column -->
+  <ng-container cdkColumnDef="nombre">
+    <th cdk-header-cell *cdkHeaderCellDef>Nombre</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.nombre}} </td>
+  </ng-container>
+
+  <!-- precioVenta Column -->
+  <ng-container cdkColumnDef="precioVenta">
+    <th cdk-header-cell *cdkHeaderCellDef>Precio Unitario</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.precioVenta}} </td>
+  </ng-container>
+
+  <!-- descripcion Column -->
+  <ng-container cdkColumnDef="descripcion">
+    <th cdk-header-cell *cdkHeaderCellDef>Descripcion</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.descripcion}} </td>
+  </ng-container>
+
+  <!-- stock Column -->
+  <ng-container cdkColumnDef="stock">
+    <th cdk-header-cell *cdkHeaderCellDef>Stock</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.stock}} </td>
+  </ng-container>
+
+  <!-- listaCategorias Column -->
+  <ng-container cdkColumnDef="listaCategorias">
+    <th cdk-header-cell *cdkHeaderCellDef>Categorias</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.listaCategorias[0].nombre}} </td>
+    
+  </ng-container>
+
+</table>

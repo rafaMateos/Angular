@@ -1,0 +1,14 @@
+{
+    "nombreCliente": "Jesucristo Hitler Montoya González",
+    "lineasPedidos": [
+        "/pedido/1/lineaPedido/2",
+        "/pedido/1/lineaPedido/3"
+    ],
+    "id": 1,
+    "idCliente": 9,
+    "nombreVendedor": "Vendedor de prueba",
+    "fechaPedido": "2019-01-20T13:37:00",
+    "fechaEntrega": "2019-01-22T08:02:00",
+    "totalPedido": 249.94
+}
+

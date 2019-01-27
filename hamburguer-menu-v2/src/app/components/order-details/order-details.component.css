@@ -1,0 +1,30 @@
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 5px solid #42A948;
+    /* green */
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+    /* red */
+}
+
+li{
+    display: inline-block;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    
+  }
+
+  .izquierda{
+    margin-left: 10%;
+    float: left;
+  }
+
+  .derecha{
+    margin-right: 15%;
+    float: right;
+  }
