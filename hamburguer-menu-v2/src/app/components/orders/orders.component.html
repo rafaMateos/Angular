@@ -1,0 +1,52 @@
+
+
+<div style="float:left">
+  <button>NEW</button>
+</div>
+
+ <input style="float:right" class ="nada" type="submit" name="lname"><br>
+ 
+<h2 style="margin-left: 40%">Orders</h2>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<table cdk-table [dataSource]="Pedidos">
+
+  <tr cdk-header-row *cdkHeaderRowDef="columns"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
+  <!-- nombre Column -->
+  <ng-container cdkColumnDef="fechaPedido">
+    <th cdk-header-cell *cdkHeaderCellDef>fechaPedido</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.fechaPedido}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="fechaEntrega">
+    <th cdk-header-cell *cdkHeaderCellDef>fechaEntrega</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.fechaEntrega}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="nombreCliente">
+    <th cdk-header-cell *cdkHeaderCellDef>nombreCliente</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.nombreCliente}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="nombreVendedor">
+    <th cdk-header-cell *cdkHeaderCellDef>nombreVendedor</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.nombreVendedor}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="totalPedido">
+    <th cdk-header-cell *cdkHeaderCellDef>totalPedido</th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.totalPedido}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="Acciones">
+    <th cdk-header-cell *cdkHeaderCellDef>Acciones</th>
+    <td cdk-cell *cdkCellDef="let row">
+      <button value="Borrar" (click)="Borrar(row.id)">Borrar</button>
+      <button value="Editar" (click)="Editar(row.id)" >Editar</button>
+    </td>
+  </ng-container>
+
+
+</table>

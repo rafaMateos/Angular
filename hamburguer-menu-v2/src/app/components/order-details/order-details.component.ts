@@ -19,7 +19,7 @@ export interface Food {
 })
 export class OrderDetailsComponent implements OnInit {
 
-  json : any;
+  json : any[];
   miOrder : any;
   Data : any;
   miLineasDePedido : Observable<any[]>;
@@ -31,25 +31,20 @@ export class OrderDetailsComponent implements OnInit {
   constructor(public miOrderService: OrderService,private httpClient:HttpClient) { }
 
   ngOnInit() {
-     this.miOrderService.getOrderAPI().subscribe(result => { 
-        this.miOrder = result;
-        this.miLineasDePedido = this.miOrder.productList;
-      });
+    
 
+   
+      
+      this.miLineasDePedido = this.miOrderService.getInfoLineas();
+      
       this.miOrderService.getInfoClient().subscribe(result => { 
         this.Data = result;
        
       });
 
-      this.miOrderService.getInfoLineas().subscribe(result => { 
-        this.miLineasDePedido =result;
-        
-      });
+    
 
-      this.miOrderService.getAlgo().subscribe(result => { 
-        this.flechaa = result;
-      });
-
+     
   }
 
   Editar(id){
@@ -63,7 +58,7 @@ export class OrderDetailsComponent implements OnInit {
   }
   
   public addProducto(): void{
-    this.json = JSON.stringify(this.flechaa);
+  
     let params = "json="+this.json;
     let headers = new HttpHeaders().set('Content-Type','application/json');
      

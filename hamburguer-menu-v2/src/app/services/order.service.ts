@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IOrder } from '../IOrder';
+
 
 
 @Injectable({
@@ -9,29 +10,28 @@ import { IOrder } from '../IOrder';
 })
 export class OrderService {
 
-  private apiURLv3 = "../../assets/order.json";
-  private apiURLv2 = "../../assets/Info.json";
-  private apiURLv1 = "../../assets/Product.json";
-  private apiURLv = "../../assets/probando.json";
+  apiURLv: string = 'https://flamerpennyapi.azurewebsites.net/pedido/';
+ apiURLv2: string = 'https://flamerpennyapi.azurewebsites.net/pedido/6';
+ apiURLv1 : string='https://flamerpennyapi.azurewebsites.net/pedido/6/lineaPedido/';
+
   constructor(private http: HttpClient) { }
 
- public getOrderAPI() : Observable<IOrder>{
-    return this.http.get<IOrder>(this.apiURLv3);
-  }
-  
-
   public getInfoClient() : Observable<any>{
-    return this.http.get<any>(this.apiURLv2);
+    let headers = new HttpHeaders().set('Accept','application/json');
+    return this.http.get<any>(this.apiURLv2,{headers : headers});
+  }
+
+  public getInfoPrduct() : Observable<any[]>{
+    let headers = new HttpHeaders().set('Accept','application/json');
+    return this.http.get<any>(this.apiURLv,{headers : headers});
   }
 
 
-  public getInfoLineas() : Observable<any>{
-    return this.http.get<any>(this.apiURLv1);
+  public getInfoLineas() : Observable<any[]>{
+    let headers = new HttpHeaders().set('Accept','application/json');
+    return this.http.get<any>(this.apiURLv1,{headers : headers});
   }
 
-  public getAlgo() : Observable<Persona>{
-    return this.http.get<Persona>(this.apiURLv);
-  }
-
+  
   
 }
