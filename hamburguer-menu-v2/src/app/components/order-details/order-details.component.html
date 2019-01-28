@@ -34,7 +34,7 @@
       <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
       <!-- nombre Column -->
       <ng-container cdkColumnDef="nombre">
-        <th cdk-header-cell *cdkHeaderCellDef>Nombre</th>
+        <th cdk-header-cell *cdkHeaderCellDef>Name</th>
         <td cdk-cell *cdkCellDef="let row"> {{row.producto.nombre}} </td>
       </ng-container>
     
@@ -70,6 +70,31 @@
         <th cdk-header-cell *cdkHeaderCellDef>subtotal</th>
         <td cdk-cell *cdkCellDef="let row"> {{row.subtotal}} </td>
       </ng-container>
+
+      <ng-container cdkColumnDef="Acciones">
+        <th cdk-header-cell *cdkHeaderCellDef>Acciones</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <button value="Editar" (click)="Borrar(row.idPedido)">Borrar</button>
+        </td>
+      </ng-container>
+
     </table>
 
-    <button (click)="addProducto()">Click me!</button>
+
+              
+    <h4>Añade un nuevo pedido</h4>
+    <mat-form-field>
+    <mat-select [(value)]="selected" placeholder="Selecciona el producto">
+     <mat-option *ngFor="let productos of miLineasDePedido" [value]="productos.producto.id">
+      {{productos.producto.nombre}}
+      </mat-option>
+      </mat-select>
+        </mat-form-field>
+
+        <p>{{selected}}</p>
+
+         
+
+
+    
+

@@ -6,9 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableDataSource,MatTable} from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableDataSource,MatTable,MatFormField} from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatTableModule } from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material';
+import {MatSelect} from '@angular/material'
+import { MatSelectModule } from '@angular/material/select';
 
 //Componentes
 import { MainNavComponent } from './components/main-nav/main-nav.component';
@@ -22,6 +27,10 @@ import { ProductService } from './services/product.service';
     AppComponent,
     MainNavComponent,
     OrderDetailsComponent
+    
+    
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -35,9 +44,14 @@ import { ProductService } from './services/product.service';
     MatListModule,
     HttpClientModule,
     CdkTableModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule
     
-   
+    
+    
   ],
   providers: [
     ProductService //-------------------
