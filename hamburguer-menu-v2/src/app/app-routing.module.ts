@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: 'order', component: OrdersComponent }
 
 
-
 ];
 
 @NgModule({

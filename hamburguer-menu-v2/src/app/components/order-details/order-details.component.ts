@@ -6,6 +6,8 @@ import { MatTableModule } from '@angular/material/table';
 import { observable, Observable } from 'rxjs';
 import { IOrder } from 'src/app/IOrder';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+
 
 export interface Food {
   value: string;
@@ -28,18 +30,17 @@ export class OrderDetailsComponent implements OnInit {
   public columns = ['nombre', 'descripcion', 'listaCategorias', 'stock','precioUnitario','impuestos','subtotal','Acciones']
   public columns2 = ['nombre']
 
-  constructor(public miOrderService: OrderService,private httpClient:HttpClient) { }
+  constructor(public miOrderService: OrderService,private httpClient:HttpClient,private route: ActivatedRoute,) { }
 
   ngOnInit() {
     
 
-   
+    const id = this.route.snapshot.paramMap.get('id');
       
-      this.miLineasDePedido = this.miOrderService.getInfoLineas();
+      this.miLineasDePedido = this.miOrderService.getInfoLineas(id);
       
-      this.miOrderService.getInfoClient().subscribe(result => { 
+      this.miOrderService.getInfoClient(id).subscribe(result => {
         this.Data = result;
-       
       });
 
     
@@ -49,7 +50,7 @@ export class OrderDetailsComponent implements OnInit {
 
   Editar(id){
 
-    alert(id);
+    this.miOrderService.deleteOrder(id);
   }
 
   Borrar(id){

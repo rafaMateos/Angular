@@ -11,14 +11,14 @@ import { IOrder } from '../IOrder';
 export class OrderService {
 
   apiURLv: string = 'https://flamerpennyapi.azurewebsites.net/pedido/';
- apiURLv2: string = 'https://flamerpennyapi.azurewebsites.net/pedido/6';
- apiURLv1 : string='https://flamerpennyapi.azurewebsites.net/pedido/6/lineaPedido/';
+ apiURLv2: string = 'https://flamerpennyapi.azurewebsites.net/pedido/';
+
 
   constructor(private http: HttpClient) { }
 
-  public getInfoClient() : Observable<any>{
+  public getInfoClient(id) : Observable<any>{
     let headers = new HttpHeaders().set('Accept','application/json');
-    return this.http.get<any>(this.apiURLv2,{headers : headers});
+    return this.http.get<any>(this.apiURLv2+ id,{headers : headers});
   }
 
   public getInfoPrduct() : Observable<any[]>{
@@ -27,9 +27,14 @@ export class OrderService {
   }
 
 
-  public getInfoLineas() : Observable<any[]>{
+  public getInfoLineas(id) : Observable<any[]>{
     let headers = new HttpHeaders().set('Accept','application/json');
-    return this.http.get<any>(this.apiURLv1,{headers : headers});
+    return this.http.get<any>(this.apiURLv2+ id + '/lineaPedido',{headers : headers});
+  }
+
+  public deleteOrder(id) : Observable<any>{
+    
+     return this.http.delete(this.apiURLv + id);
   }
 
   

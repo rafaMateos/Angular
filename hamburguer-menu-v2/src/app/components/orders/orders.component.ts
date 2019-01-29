@@ -21,6 +21,7 @@ export class OrdersComponent implements OnInit {
   }
 
   Borrar(id){
-    alert('Delete/////https://flamerpennyapi.azurewebsites.net/pedido/'+id);
+    
+    this.miOrderService.deleteOrder(id);
   }
 }
