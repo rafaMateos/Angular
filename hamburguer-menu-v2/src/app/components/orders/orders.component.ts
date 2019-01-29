@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -20,13 +21,6 @@ export class OrdersComponent implements OnInit {
   }
 
   Borrar(id){
-
     alert('Delete/////https://flamerpennyapi.azurewebsites.net/pedido/'+id);
   }
-
-  Editar(id){
-
-    alert('Pasar a la otra pantalla este id para mostrarlo(OrderDetails) : '+id);
-  }
-
 }

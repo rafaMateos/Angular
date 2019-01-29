@@ -22,13 +22,15 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 //Servicios
 import { ProductService } from './services/product.service';
 import { OrdersComponent } from './components/orders/orders.component';
+import { DylanAtiendeComponent } from './components/dylan-atiende/dylan-atiende.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     OrderDetailsComponent,
-    OrdersComponent
+    OrdersComponent,
+    DylanAtiendeComponent
     
     
     
