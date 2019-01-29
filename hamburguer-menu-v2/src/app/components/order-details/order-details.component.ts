@@ -50,7 +50,7 @@ export class OrderDetailsComponent implements OnInit {
 
   Editar(id){
 
-    this.miOrderService.deleteOrder(id);
+    
   }
 
   Borrar(id){

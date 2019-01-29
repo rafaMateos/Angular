@@ -22,6 +22,9 @@ export class OrdersComponent implements OnInit {
 
   Borrar(id){
     
-    this.miOrderService.deleteOrder(id);
+    this.miOrderService.deleteOrder(id).subscribe(result=>{
+
+      
+    })
   }
 }
