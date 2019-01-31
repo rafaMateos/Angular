@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material';
 import {MatSelect} from '@angular/material'
 import { MatSelectModule } from '@angular/material/select';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 //Componentes
 import { MainNavComponent } from './components/main-nav/main-nav.component';
@@ -52,7 +54,8 @@ import { DylanAtiendeComponent } from './components/dylan-atiende/dylan-atiende.
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressBarModule
     
     
     

@@ -10,6 +10,8 @@ import { RouterLink } from '@angular/router';
 })
 export class OrdersComponent implements OnInit {
   public columns = ['fechaPedido','fechaEntrega','nombreCliente','nombreVendedor','totalPedido','Acciones'];
+  public ProgresBar : any;
+ 
 
   Pedidos : Observable<any[]>;
 
@@ -17,7 +19,18 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
 
+    this.ProgresBar = document.getElementById('algo');
+
     this.Pedidos = this.miOrderService.getInfoPrduct();
+    if(typeof this.Pedidos === 'undefined'){
+
+      this.ProgresBar.setAttribute('hidden','hidden');
+
+    }else{
+
+      this.ProgresBar.removeAttribute('hidden');
+    }
+  
   }
 
   Borrar(id){
