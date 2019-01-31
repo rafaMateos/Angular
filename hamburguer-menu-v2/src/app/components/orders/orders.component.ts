@@ -23,8 +23,8 @@ export class OrdersComponent implements OnInit {
   Borrar(id){
     
     this.miOrderService.deleteOrder(id).subscribe(result=>{
-
-      
+      console.log(result)
+      this.Pedidos = this.miOrderService.getInfoPrduct();
     })
   }
 }
