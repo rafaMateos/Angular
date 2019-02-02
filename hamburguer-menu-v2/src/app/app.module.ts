@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +26,8 @@ import { ProductService } from './services/product.service';
 import { OrdersComponent } from './components/orders/orders.component';
 import { DylanAtiendeComponent } from './components/dylan-atiende/dylan-atiende.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,10 +35,7 @@ import { DylanAtiendeComponent } from './components/dylan-atiende/dylan-atiende.
     OrderDetailsComponent,
     OrdersComponent,
     DylanAtiendeComponent
-    
-    
-    
-    
+
   ],
   imports: [
     BrowserModule,
