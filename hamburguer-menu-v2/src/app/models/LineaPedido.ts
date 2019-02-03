@@ -9,6 +9,7 @@ export class LineaPedido{
     cantidad:number
     impuestos:number
     subtotal: number
+   
 
   
 }

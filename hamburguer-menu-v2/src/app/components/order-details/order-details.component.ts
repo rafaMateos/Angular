@@ -8,6 +8,7 @@ import { IOrder } from 'src/app/IOrder';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { LineaPedido } from 'src/app/models/LineaPedido';
+import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
 
 
 export interface Food {
@@ -26,6 +27,9 @@ export class OrderDetailsComponent implements OnInit {
   LineaPedido: LineaPedido = new LineaPedido();
   LineaPedidoActu: LineaPedido = new LineaPedido();
   miOrder : any[];
+  ProductToSelect : string;
+  ArrayDeProductos : Product[] = [];
+  Temporal : Product[]
   Stock:string
   id : string
   max:string;
@@ -33,6 +37,9 @@ export class OrderDetailsComponent implements OnInit {
   Data : any;
   p : Product;
   miLineasDePedido : Observable<any[]>;
+  miLineasDePedido2 :string
+  miLineasDePedido3 : any[]
+
   flecha: any;
   productid: number
   //public columns = ['name', 'description', 'category', 'units', 'unitPrice', 'taxes','subTotal']
@@ -45,16 +52,26 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit() {
     
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.miLineasDePedido = this.miOrderService.getInfoLineas(this.id);
+
+    this.miOrderService.getInfoLineas(this.id).subscribe(result =>{
+        this.miLineasDePedido2 = JSON.stringify(result)
+        this.miLineasDePedido3 = JSON.parse(this.miLineasDePedido2);
+
+    })
+
+
     this.miOrderService.getInfoPrductGeneral().subscribe(result =>{
 
       this.miOrder = result;
+      this.ProductToSelect = JSON.stringify(result)
+      this.Temporal = JSON.parse(this.ProductToSelect)
+
 
      })
 
 
-     this.id = this.route.snapshot.paramMap.get('id');
-      
-      this.miLineasDePedido = this.miOrderService.getInfoLineas(this.id);
    
       this.miOrderService.getInfoClient(this.id).subscribe(result => {
         this.Data = result;
@@ -138,6 +155,8 @@ export class OrderDetailsComponent implements OnInit {
       console.log(JSON.stringify(this.LineaPedido))
   
       this.addProducto(this.LineaPedido)
+      this.reloadPage();
+     
 
     }
 
@@ -215,6 +234,7 @@ public Actualizar(){
 
       //this.ActualizarLinea(this.LineaPedido);Preguntar a oscar por delete y put de la linea
       alert('Po va bien')
+      this.reloadPage();
 }
 
     }
@@ -231,6 +251,12 @@ public ActualizarLinea(LineaPedido): void{
      {console.log('Todo flama')},
 
      error =>{console.log(error)})
+
+}
+
+reloadPage(){
+
+  window.location.reload();
 
 }
 
