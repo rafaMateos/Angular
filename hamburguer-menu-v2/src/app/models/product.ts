@@ -1,11 +1,11 @@
 export class Product {
 
-    name:string; 
-    description: string;
-    category: string;
-    units: number;
-    uintPrice: number;
-    taxes: number;
-    subTotal: number;
+    id:string; 
+    nombre: string;
+    precioVenta: string;
+    descripcion: string;
+    stock: number;
+    listaCategorias: any[];
+    
 
 }

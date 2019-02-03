@@ -23,14 +23,16 @@ export class OrdersComponent implements OnInit {
    
     this.Pedidos = this.miOrderService.getInfoPrduct();
    
-    this.Pedidos.subscribe(result =>{
-      this.ProgresBar = document.getElementById('DivProgres').setAttribute('hidden','hidden');
-      })
+    this.Pedidos.subscribe(
+      result =>{
+        if(this.Pedidos)
+       this.ProgresBar = document.getElementById('DivProgres').setAttribute('hidden','hidden');}
+      )
+
+  }
+
    
   
-
-  
-  }
 
   Borrar(id){
     this.miOrderService.deleteOrder(id).subscribe(result=>{

@@ -1,5 +1,7 @@
-<!-- Compiled and minified CSS -->
+<!-- Compiled and minified CSS 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+-->
+
 
 <h2>Order details</h2>
 
@@ -51,9 +53,9 @@
       </ng-container>
     
       <!-- stock Column -->
-      <ng-container cdkColumnDef="stock">
-        <th cdk-header-cell *cdkHeaderCellDef>Stock</th>
-        <td cdk-cell *cdkCellDef="let row"> {{row.producto.stock}} </td>
+      <ng-container cdkColumnDef="cantidad">
+        <th cdk-header-cell *cdkHeaderCellDef>cantidad</th>
+        <td cdk-cell *cdkCellDef="let row"> {{row.cantidad}} </td>
       </ng-container>
 
       <ng-container cdkColumnDef="precioUnitario">
@@ -74,16 +76,68 @@
       <ng-container cdkColumnDef="Acciones">
         <th cdk-header-cell *cdkHeaderCellDef>Acciones</th>
         <td cdk-cell *cdkCellDef="let row">
-          <button value="Editar" (click)="Borrar(row.idPedido)">Borrar</button>
+          <button value="Borrar" (click)="Borrar(row.idPedido)">Borrar</button>
+          <button value="Editar"  (click)="Editar(row.idProducto)">Editar Linea</button>
         </td>
       </ng-container>
 
     </table>
 
+    <button (click) = "Open()">Añadir Linea Pedido</button>
 
+
+    <div id="NewProduct" hidden>
+
+    <div style="margin-top: 15px" id="NuevaLineaPedido">
+<label> Escoja un producto:</label>
+      <mat-form-field>
+        <mat-select [(value)]="selected" (selectionChange)="hola(selected)" placeholder="miOrder">
+          <mat-option *ngFor="let p of miOrder" [value]="p.id">
+            {{p.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+    </div>
+
+
+
+    <label> Descripcion:</label>
+    <input id="descrip" type="text"/><br>
+    <label> Lista de categorias: </label>
+    <input id="categories" type="text"/><br>
+    <label> Cantidad: </label>
+    <input id="cantidad" type="text"/>
+    <label>Stock disponible:</label>
+    <label id="stockdispo"></label><br>
+    <label> Precio Unitario: </label>
+    <input id="precio" type="text"/><br>
+    <label> impuestos: </label>
+    <input id="impuestos" type="text" value="0.21"/><br>
+    <label> Subtotal: </label>
+    <input id="total" type="text"/><br>
+
+    <button (click) = "save()"> SAVE </button>
+
+</div>
+
+
+<div id="EditarPro" hidden>
+
+ 
+
+  <label> Cantidad: </label>
+  <input id="cantidadE" type="text"/>
+  <label>Stock disponible:</label>
+  <label id="stockdispoE"></label><br>
+  <label> Precio Unitario: </label>
+  <input id="precioE" type="text"/><br>
+  <label> Subtotal: </label>
+  <input id="totalE" type="text"/><br>
+
+  <button (click) = "Actualizar()"> SAVE </button>
+
+</div>
    
-
-
    
 
 
