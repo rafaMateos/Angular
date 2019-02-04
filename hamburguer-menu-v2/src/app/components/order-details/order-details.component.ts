@@ -371,18 +371,46 @@ export class OrderDetailsComponent implements OnInit {
   helow(){
 
    
-    document.getElementById('fechaSelect').getAttribute('val')
-    var fecha : any = (<HTMLInputElement>document.getElementById("fechaSelect")).value.toString();
+    
+    var fecha : string = (<HTMLInputElement>document.getElementById("fechaSelect")).value.toString();
+    var horaSelect : string = (<HTMLInputElement>document.getElementById("horaSelect")).value.toString();
+    var fechaConHora = fecha.concat('T'+horaSelect +':00')
+   
+    var fechaCompare = new Date(fechaConHora);
+    var FechaActual = new Date();
+    var FechaPedido = new Date(this.Data.fechaPedido.toString());
+  
+    alert(fechaConHora)
+  
 
-    this.actuFecha.fechaEntrega = fecha;
+   
+    
+    this.actuFecha.fechaEntrega = fechaConHora;
     this.actuFecha.fechaPedido = this.Data.fechaPedido;
     this.actuFecha.id = this.Data.id;
     this.actuFecha.idCliente = this.Data.idCliente;
     this.actuFecha.nombreVendedor = this.Data.nombreVendedor;
     this.actuFecha.totalPedido = this.Data.totalPedido;
 
+    console.log(this.actuFecha.fechaEntrega)
+
+    if(fechaCompare < FechaPedido){
+
+      alert('La fecha de entrega no puede ser menor a la de realizacion')
+
+    }else if(fechaCompare > FechaActual){
+
+      alert('La fecha de entrega no puede ser mayor a la actual')
+
+    }else{
+
+      this.ActuFecha(this.actuFecha)
+      document.getElementById('fecha').setAttribute('hidden','hidden');
+
+    }
+
     //var json = JSON.stringify(this.actuFecha);
-    this.ActuFecha(this.actuFecha)
+  
 
 
   }
