@@ -20,6 +20,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 //Componentes
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
+import {MatNativeDateModule } from '@angular/material';
 
 //Servicios
 import { ProductService } from './services/product.service';
@@ -54,7 +57,9 @@ import { DylanAtiendeComponent } from './components/dylan-atiende/dylan-atiende.
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
     
     
     
