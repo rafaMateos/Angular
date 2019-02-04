@@ -123,7 +123,28 @@ export class OrderDetailsComponent implements OnInit {
 
   Borrar(id){
 
-   this.miOrderService.deleteLine(id,this.id);
+    alert(id);
+   
+    var fecha = new Date();
+    fecha = this.Data.fechaEntrega
+
+
+
+    let fechaNull = new Date(fecha);
+    let year = fechaNull.getFullYear();
+    alert(year);
+
+    if(year == 1){
+
+      this.miOrderService.deleteLine(id,this.id).subscribe(result =>{
+        console.log(result)
+        this.miLineasDePedido = this.miOrderService.getInfoLineas(this.id);
+      });
+
+      //this.reloadPage();
+    }else{
+      alert('No puedes borrar un pedido ya entregado')
+    }
   }
 
 
@@ -145,9 +166,10 @@ export class OrderDetailsComponent implements OnInit {
 
     console.log(this.LineaPedido)
 
-    if(this.LineaPedido.cantidad > this.p.stock){
+    if(this.LineaPedido.cantidad > this.p.stock || this.LineaPedido.subtotal < 0){
 
-      alert('No stock suficiente')
+      alert('No stock suficiente o precio negativo')
+
     }else{
 
       document.getElementById('NewProduct').setAttribute('hidden','hidden');
@@ -155,9 +177,7 @@ export class OrderDetailsComponent implements OnInit {
       console.log(JSON.stringify(this.LineaPedido))
   
       this.addProducto(this.LineaPedido)
-      this.reloadPage();
-     
-
+  
     }
 
   }
@@ -170,8 +190,9 @@ export class OrderDetailsComponent implements OnInit {
      this.httpClient.post('https://flamerpennyapi.azurewebsites.net/pedido/'+this.LineaPedido.idPedido +'/lineapedido',send,{headers : headers})
      .subscribe(
        result => 
-
-       {console.log('Todo flama')},
+       {console.log('Todo flama')
+       this.miLineasDePedido = this.miOrderService.getInfoLineas(this.id);
+      },
 
        error =>{console.log(error)})
 
@@ -227,14 +248,13 @@ public Actualizar(){
     this.LineaPedido.impuestos = 0.21;
     this.LineaPedido.subtotal =  total;
 
-    if(this.LineaPedido.cantidad > this.p.stock){
+    if((this.LineaPedido.cantidad - this.p.stock) < 0){
 
       alert('Stock insuficiente');
     }else{
 
-      //this.ActualizarLinea(this.LineaPedido);Preguntar a oscar por delete y put de la linea
-      alert('Po va bien')
-      this.reloadPage();
+      this.ActualizarLinea(this.LineaPedido);
+      
 }
 
     }
@@ -244,20 +264,13 @@ public ActualizarLinea(LineaPedido): void{
   var send = JSON.stringify(LineaPedido);
   let headers = new HttpHeaders().set('Content-Type','application/json');
    
-   this.httpClient.put('https://flamerpennyapi.azurewebsites.net/pedido/'+this.LineaPedido.idPedido +'/lineapedido/' + LineaPedido.idProducto,send,{headers : headers})
+   this.httpClient.put('https://flamerpennyapi.azurewebsites.net/pedido/'+this.LineaPedido.idPedido +'/lineapedido',send,{headers : headers})
    .subscribe(
      result => 
-
-     {console.log('Todo flama')},
-
+     {console.log('Todo flama')
+     this.miLineasDePedido = this.miOrderService.getInfoLineas(this.id)},
      error =>{console.log(error)})
-
 }
 
-reloadPage(){
-
-  window.location.reload();
-
-}
 
 }

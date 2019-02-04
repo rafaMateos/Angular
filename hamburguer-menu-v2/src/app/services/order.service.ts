@@ -30,7 +30,7 @@ export class OrderService {
 
   public getInfoLineas(id) : Observable<any[]>{
     let headers = new HttpHeaders().set('Accept','application/json');
-    return this.http.get<any>(this.apiURLv+ id + '/lineaPedido',{headers : headers});
+    return this.http.get<any[]>(this.apiURLv+ id + '/lineaPedido',{headers : headers});
   }
 
   public getInfoPrductGeneral() : Observable<any[]>{

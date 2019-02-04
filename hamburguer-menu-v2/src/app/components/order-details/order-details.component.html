@@ -76,7 +76,7 @@
       <ng-container cdkColumnDef="Acciones">
         <th cdk-header-cell *cdkHeaderCellDef>Acciones</th>
         <td cdk-cell *cdkCellDef="let row">
-          <button value="Borrar" (click)="Borrar(row.idPedido)">Borrar</button>
+          <button value="Borrar" (click)="Borrar(row.idProducto)">Borrar</button>
           <button value="Editar"  (click)="Editar(row.idProducto)">Editar Linea</button>
         </td>
       </ng-container>

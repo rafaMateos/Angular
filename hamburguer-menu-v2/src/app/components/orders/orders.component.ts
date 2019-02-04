@@ -19,8 +19,6 @@ export class OrdersComponent implements OnInit {
   constructor(public miOrderService: OrderService) { }
 
   ngOnInit() {
-
-   
     this.Pedidos = this.miOrderService.getInfoPrduct();
    
     this.Pedidos.subscribe(
