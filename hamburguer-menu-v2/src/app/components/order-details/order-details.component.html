@@ -32,7 +32,6 @@
 
                     <input id="fechaSelect" value ="2019-01-01" type="date" name="bday">
                     <input id="horaSelect" value="00:00" type="time" name="tday">
-                    
                     <button (click) ="helow()"> Editar </button>
                   </li>
 
@@ -102,13 +101,14 @@
     <div id="NewProduct" hidden>
 
     <div style="margin-top: 15px" id="NuevaLineaPedido">
-<label> Escoja un producto:</label>
+
+  <label> Escoja un producto:</label>
       <mat-form-field>
-        <mat-select [(value)]="selected" (selectionChange)="ProductoSeleccionado(selected)" placeholder="ArrayDeProductos">
-          <mat-option *ngFor="let p of ArrayDeProductos" [value]="p.id">
+        <select matNativeControl (change)="ProductoSeleccionado($event.target.value)" placeholder="ArrayDeProductos">
+          <option *ngFor="let p of ArrayDeProductos" value="{{p.id}}">
             {{p.nombre}}
-          </mat-option>
-        </mat-select>
+          </option>
+        </select>
       </mat-form-field><br>
     </div>
 
@@ -150,12 +150,15 @@
   <button (click) = "Actualizar()"> SAVE </button>
 
 </div>
+
+
+<button (click) = "SendDate()"></button>
    
    
 
 
-   
-         
+
+
 
 
     

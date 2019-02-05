@@ -48,6 +48,7 @@ export class OrderDetailsComponent implements OnInit {
   StockTotal : any = 0;
   cantidadReservada : any = 0;
   CantidadCompare : any;
+  fechaConHora : Date;
 
   private fechaSelecionada: Date = new Date();
 
@@ -64,6 +65,7 @@ export class OrderDetailsComponent implements OnInit {
     
     this.id = this.route.snapshot.paramMap.get('id');
     this.miLineasDePedido = this.miOrderService.getInfoLineas(this.id);
+    
 
     this.miOrderService.getInfoLineas(this.id).subscribe(result =>{
         this.miLineasDePedido2 = JSON.stringify(result)
@@ -92,20 +94,30 @@ export class OrderDetailsComponent implements OnInit {
 
   public Open(){
 
-    for(var i = 0; i< this.miLineasDePedido3.length; i++){
+    this.miOrderService.getInfoLineas(this.id).subscribe(result =>{
+      this.miLineasDePedido2 = JSON.stringify(result)
+      this.miLineasDePedido3 = JSON.parse(this.miLineasDePedido2);
 
-      this.ProductsToFilter.push(this.miLineasDePedido3[i].producto.nombre)
+      this.ArrayDeProductos = [];
 
-    }
-
-    for(var i = 0; i< this.Temporal.length; i++){
-
-      if(!this.ProductsToFilter.includes(this.Temporal[i].nombre)){
-
-        this.ArrayDeProductos.push(this.Temporal[i]);
-
+      for(var i = 0; i< this.miLineasDePedido3.length; i++){
+        this.ProductsToFilter = [];
+        this.ProductsToFilter.push(this.miLineasDePedido3[i].producto.nombre)
+  
       }
-     }
+  
+      for(var i = 0; i< this.Temporal.length; i++){
+  
+        if(!this.ProductsToFilter.includes(this.Temporal[i].nombre)){
+  
+         
+          this.ArrayDeProductos.push(this.Temporal[i]);
+  
+        }
+       }
+
+  })
+
 
      var fecha = new Date();
      fecha = this.Data.fechaEntrega
@@ -123,8 +135,6 @@ export class OrderDetailsComponent implements OnInit {
 
      }
 
-
-    
 
   }
 
@@ -230,7 +240,8 @@ export class OrderDetailsComponent implements OnInit {
        {console.log('Todo flama'),
        this.miLineasDePedido = this.miOrderService.getInfoLineas(this.id),
        alert('Añadido correctamente')},
-       error =>{console.log(error)})
+       error =>{console.log(error)},
+       )
 
   }
 
@@ -435,6 +446,26 @@ export class OrderDetailsComponent implements OnInit {
       });
       alert('Actualizada correctamente')
       });
+
+  }
+
+   twoDigits(d) {
+    if(0 <= d && d < 10) return "0" + d.toString();
+    if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+    return d.toString();
+}
+
+  SendDate(){
+
+    this.fechaConHora = new Date();
+    //var fechaFlama = this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
+
+    //this.actuFecha.fechaEntrega = this.fechaConHora;
+    this.actuFecha.fechaPedido = this.Data.fechaPedido;
+    this.actuFecha.id = this.Data.id;
+    this.actuFecha.idCliente = this.Data.idCliente;
+    this.actuFecha.nombreVendedor = this.Data.nombreVendedor;
+    this.actuFecha.totalPedido = this.Data.totalPedido;
 
   }
 
