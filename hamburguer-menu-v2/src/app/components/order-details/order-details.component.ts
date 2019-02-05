@@ -45,6 +45,9 @@ export class OrderDetailsComponent implements OnInit {
   miLineasDePedido2 :string
   miLineasDePedido3 : any[] = [];
   ProductsToFilter : string[] = [];
+  StockTotal : any = 0;
+  cantidadReservada : any = 0;
+  CantidadCompare : any;
 
   private fechaSelecionada: Date = new Date();
 
@@ -54,7 +57,6 @@ export class OrderDetailsComponent implements OnInit {
   public columns = ['nombre', 'descripcion', 'listaCategorias', 'cantidad','precioUnitario','impuestos','subtotal','Acciones']
 
 
- 
 
   constructor(public miOrderService: OrderService,private httpClient:HttpClient,private route: ActivatedRoute,) { }
 
@@ -172,7 +174,6 @@ export class OrderDetailsComponent implements OnInit {
         alert('Borrado correctamente')
         this.miLineasDePedido = this.miOrderService.getInfoLineas(this.id);
       });
-
       //this.reloadPage();
     }else{
       alert('No puedes borrar un pedido ya entregado')
@@ -235,6 +236,7 @@ export class OrderDetailsComponent implements OnInit {
 
   public Editar(id){
  
+
   document.getElementById('EditarPro').removeAttribute('hidden');
 
   this.miOrderService.getLinea(this.id,id).subscribe(result =>{
@@ -243,12 +245,14 @@ export class OrderDetailsComponent implements OnInit {
 
     this.LineaPedidoActu = JSON.parse(this.json);
 
+    this.CantidadCompare = this.LineaPedidoActu.cantidad;
     
     document.getElementById('cantidadE').setAttribute('value',this.LineaPedidoActu.cantidad.toString());
 
     document.getElementById('precioE').setAttribute('value',this.LineaPedidoActu.precioUnitario.toString());
 
     document.getElementById('totalE').setAttribute('value',this.LineaPedidoActu.subtotal.toString());
+    
     
 
   })
@@ -261,13 +265,17 @@ export class OrderDetailsComponent implements OnInit {
 
     this.p = JSON.parse(this.json);
 
+ 
     document.getElementById('stockdispoE').innerText = this.p.stock.toString();
+    
 
   })
 
   }
 
   public Actualizar(){
+
+    
 
   document.getElementById('EditarPro').setAttribute('hidden','hidden');
   
@@ -284,7 +292,7 @@ export class OrderDetailsComponent implements OnInit {
     this.LineaPedido.impuestos = 0.21;
     this.LineaPedido.subtotal =  this.SubTotalEdit;
 
-    if((this.p.stock - this.LineaPedido.cantidad) < 0){
+    if((this.p.stock + this.CantidadCompare) - (this.LineaPedido.cantidad)  < 0 || this.LineaPedido.cantidad >(this.p.stock + this.CantidadCompare)){
 
       alert('Stock insuficiente');
 
@@ -370,8 +378,6 @@ export class OrderDetailsComponent implements OnInit {
 
   helow(){
 
-   
-    
     var fecha : string = (<HTMLInputElement>document.getElementById("fechaSelect")).value.toString();
     var horaSelect : string = (<HTMLInputElement>document.getElementById("horaSelect")).value.toString();
     var fechaConHora = fecha.concat('T'+horaSelect +':00')
@@ -382,9 +388,6 @@ export class OrderDetailsComponent implements OnInit {
   
     alert(fechaConHora)
   
-
-   
-    
     this.actuFecha.fechaEntrega = fechaConHora;
     this.actuFecha.fechaPedido = this.Data.fechaPedido;
     this.actuFecha.id = this.Data.id;
