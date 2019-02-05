@@ -41,7 +41,7 @@ export class OrdersComponent implements OnInit {
     let fechaNull = new Date(fecha);
     let year = fechaNull.getFullYear();
   
-    if(year != 1){
+    if(year == 1){
       this.miOrderService.deleteOrder(id).subscribe(result=>{
         console.log(result)
         this.Pedidos = this.miOrderService.getInfoPrduct();
